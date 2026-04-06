@@ -111,17 +111,47 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {menuOpen && (
-        <div style={{ position: 'absolute', inset: '100% 0 0 0', background: 'rgba(255,255,255,0.96)', borderTop: '1px solid rgba(229,231,235,0.95)', boxShadow: '0 24px 60px rgba(15,23,42,0.08)', padding: '1rem var(--gutter)', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-          {NAV_LINKS.map(l => (
-            <Link key={l.href} href={l.href} onClick={() => setMenuOpen(false)}
-              style={{ fontSize: 'var(--text-sm)', color: 'var(--gray-700)', textDecoration: 'none', padding: '0.85rem 0.75rem', borderRadius: '0.75rem' }}
-              className="hover:bg-gray-100">
-              {l.label}
-            </Link>
-          ))}
-          {user
-            ? <button onClick={() => { setMenuOpen(false); signOut() }} style={{ fontSize: 'var(--text-sm)', color: 'var(--gray-700)', background: 'none', border: 'none', cursor: 'pointer', textAlign: 'left', padding: '0.85rem 0.75rem', borderRadius: '0.75rem' }} className="hover:bg-gray-100">Sign out</button>
-            : <Link href="/login" onClick={() => setMenuOpen(false)} style={{ fontSize: 'var(--text-sm)', color: 'var(--gray-700)', textDecoration: 'none', padding: '0.85rem 0.75rem', borderRadius: '0.75rem' }} className="hover:bg-gray-100">Sign in</Link>}
+        <div className="md:hidden fixed inset-x-0 top-full bg-white/95 backdrop-blur-lg border-t border-gray-200 shadow-lg z-50">
+          <div className="container py-4 space-y-1">
+            {NAV_LINKS.map(l => (
+              <Link key={l.href} href={l.href} onClick={() => setMenuOpen(false)}
+                className={`block px-4 py-3 text-sm font-medium rounded-lg transition-colors ${
+                  isActive(l.href)
+                    ? 'bg-brand/10 text-brand'
+                    : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900'
+                }`}>
+                {l.label}
+              </Link>
+            ))}
+            <div className="border-t border-gray-200 pt-3 mt-3">
+              {user ? (
+                <div className="space-y-3">
+                  <div className="flex items-center gap-3 px-4">
+                    {avatar
+                      ? <img src={avatar} alt={name} className="w-8 h-8 rounded-full object-cover border border-gray-100" />
+                      : <div className="w-8 h-8 rounded-full bg-brand-light text-brand flex items-center justify-center text-sm font-semibold">{name?.charAt(0).toUpperCase()}</div>
+                    }
+                    <span className="text-sm font-semibold text-gray-900">{name}</span>
+                  </div>
+                  <button onClick={() => { setMenuOpen(false); signOut() }}
+                    className="block w-full text-left px-4 py-3 text-sm font-medium text-gray-700 hover:bg-gray-100 hover:text-gray-900 rounded-lg transition-colors">
+                    Sign out
+                  </button>
+                </div>
+              ) : (
+                <div className="space-y-1">
+                  <Link href="/login" onClick={() => setMenuOpen(false)}
+                    className="block px-4 py-3 text-sm font-medium text-gray-700 hover:bg-gray-100 hover:text-gray-900 rounded-lg transition-colors">
+                    Sign in
+                  </Link>
+                  <Link href="/login" onClick={() => setMenuOpen(false)}
+                    className="block mx-4 mt-3 btn btn-dark text-center">
+                    Join community
+                  </Link>
+                </div>
+              )}
+            </div>
+          </div>
         </div>
       )}
     </header>

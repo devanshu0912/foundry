@@ -40,7 +40,7 @@ function FeaturedCard({ startup, index }) {
   return (
     <Link
       href={`/startups/${startup.id}`}
-      className={`group relative block rounded-3xl overflow-hidden cursor-pointer ${isLarge ? 'col-span-2 row-span-2' : ''}`}
+      className={`group relative block rounded-3xl overflow-hidden cursor-pointer ${isLarge ? 'md:col-span-2 md:row-span-2' : ''}`}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{ backgroundColor: color.bg }}
@@ -56,8 +56,8 @@ function FeaturedCard({ startup, index }) {
       />
 
       {/* Content */}
-      <div className={`relative z-10 flex flex-col justify-between h-full ${isLarge ? 'p-10' : 'p-7'}`}
-        style={{ minHeight: isLarge ? '340px' : '160px' }}>
+      <div className={`relative z-10 flex flex-col justify-between h-full ${isLarge ? 'p-6 md:p-10' : 'p-6'}`}
+        style={{ minHeight: isLarge ? '280px md:340px' : '200px' }}>
 
         {/* Top row */}
         <div className="flex items-start justify-between">
@@ -77,17 +77,17 @@ function FeaturedCard({ startup, index }) {
         {/* Bottom content */}
         <div>
           {isLarge && startup.arr && (
-            <p className="font-serif text-5xl font-black text-white mb-3 opacity-20">{startup.arr}</p>
+            <p className="font-serif text-3xl md:text-5xl font-black text-white mb-3 opacity-20">{startup.arr}</p>
           )}
 
           {/* Clickbait hook */}
-          <p className={`font-medium text-white/70 mb-1 ${isLarge ? 'text-sm' : 'text-xs'}`}>
+          <p className={`font-medium text-white/70 mb-1 ${isLarge ? 'text-xs md:text-sm' : 'text-xs'}`}>
             {getHook(startup)}
           </p>
 
           {/* Main headline */}
           <h3
-            className={`font-serif font-black text-white leading-tight transition-all duration-300 ${isLarge ? 'text-3xl' : 'text-lg'}`}
+            className={`font-serif font-black text-white leading-tight transition-all duration-300 ${isLarge ? 'text-xl md:text-3xl' : 'text-lg'}`}
             style={{ transform: hovered ? 'translateY(-2px)' : 'translateY(0)' }}
           >
             {startup.headline || startup.name}
@@ -95,8 +95,8 @@ function FeaturedCard({ startup, index }) {
 
           {/* Founder + read time */}
           {isLarge && (
-            <div className="flex items-center gap-3 mt-5">
-              <div className="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center text-xs font-bold text-white">
+            <div className="flex items-center gap-3 mt-3 md:mt-5">
+              <div className="w-5 h-5 md:w-6 md:h-6 rounded-full bg-white/20 flex items-center justify-center text-xs font-bold text-white">
                 {startup.name?.charAt(0)}
               </div>
               <p className="text-xs text-white/60">{startup.founder_names} · 5 min read</p>
@@ -124,9 +124,9 @@ export default function FeaturedStories({ stories = [] }) {
         </Link>
       </div>
 
-      {/* Bento grid layout — first card is large, rest are small */}
-      <div className="grid grid-cols-2 grid-rows-2 gap-4 auto-rows-fr"
-        style={{ gridTemplateRows: 'repeat(2, minmax(160px, 1fr))' }}>
+      {/* Bento grid layout — responsive */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 auto-rows-fr"
+        style={{ gridTemplateRows: 'repeat(auto-fit, minmax(160px, 1fr))' }}>
         {stories.slice(0, 3).map((s, i) => (
           <FeaturedCard key={s.id} startup={s} index={i} />
         ))}

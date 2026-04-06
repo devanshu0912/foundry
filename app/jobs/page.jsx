@@ -22,7 +22,7 @@ export default async function JobsPage() {
     <>
       <Navbar />
       <main className="max-w-3xl mx-auto px-4 sm:px-6 py-12">
-        <h1 className="font-serif text-3xl font-black mb-2">Jobs at startups</h1>
+        <h1 className="font-serif text-3xl font-black mb-2">Jobs and Internships</h1>
         <p className="text-gray-500 text-sm mb-10">
           {jobs.length} open roles at India's fastest growing startups.
         </p>
