@@ -112,7 +112,7 @@ export default function FeaturedStories({ stories = [] }) {
   if (!stories.length) return null
 
   return (
-    <section className="max-w-6xl mx-auto px-6 py-20">
+    <section className="max-w-6xl mx-auto px-6 py-16">
       <div className="flex items-end justify-between mb-8">
         <div>
           <p className="text-xs text-brand font-semibold uppercase tracking-widest mb-2">Editor's pick</p>

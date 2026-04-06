@@ -59,9 +59,10 @@ export default async function HomePage() {
       <main>
 
         {/* ── HERO ────────────────────────────────────────────── */}
-        <section style={{ background: 'var(--black)', color: 'var(--white)', position: 'relative', overflow: 'hidden' }}>
+        <section style={{ background: 'var(--black)', color: 'var(--white)', position: 'relative', overflow: 'hidden', minHeight: 'calc(100vh - 60px)' }}>
           <div className="grid-texture" style={{ position: 'absolute', inset: 0 }} />
-          <div className="container" style={{ position: 'relative', paddingTop: 'var(--sp-24)', paddingBottom: 'var(--sp-20)' }}>
+          <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(circle at top right, rgba(216,90,48,0.18), transparent 32%), radial-gradient(circle at 20% 80%, rgba(255,184,98,0.14), transparent 26%)' }} />
+          <div className="container" style={{ position: 'relative', paddingTop: 'var(--sp-24)', paddingBottom: 'var(--sp-16)' }}>
 
             {/* Badge */}
             <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', fontSize: 'var(--text-xs)', fontWeight: 600, color: 'var(--brand)', border: '1px solid rgba(216,90,48,0.3)', padding: '0.375rem 0.875rem', borderRadius: 'var(--radius-full)', marginBottom: 'var(--sp-8)' }}>
@@ -87,7 +88,7 @@ export default async function HomePage() {
             </div>
 
             {/* Stats — 4-column grid, consistent */}
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 'var(--sp-8)', paddingTop: 'var(--sp-8)', borderTop: '1px solid rgba(255,255,255,0.1)' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 'var(--sp-8)', paddingTop: 'var(--sp-8)' }}>
               {[
                 { num: `${startups.length || 0}+`, label: 'Startup stories' },
                 { num: `${founders.length || 0}+`, label: 'Founder profiles' },

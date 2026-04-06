@@ -81,7 +81,7 @@ export default function RotatingQuotes() {
   const quote = quotes[current]
 
   return (
-    <section className="bg-black text-white py-16 px-4">
+    <section className="bg-black text-white py-12 px-4">
       <div className="max-w-3xl mx-auto text-center">
         <p className="text-xs text-brand uppercase tracking-widest mb-8 font-medium">Wisdom from the best</p>
 

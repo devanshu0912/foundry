@@ -118,9 +118,9 @@ body {
    SECTION RHYTHM
    Every section follows the same vertical cadence.
 ───────────────────────────────────────────────────── */
-.section { padding-block: var(--sp-20); }
-.section-sm { padding-block: var(--sp-12); }
-.section-header { margin-bottom: var(--sp-10); }
+.section { padding-block: var(--sp-12); }
+.section-sm { padding-block: var(--sp-8); }
+.section-header { margin-bottom: var(--sp-6); }
 
 /* ─────────────────────────────────────────────────────
    TYPOGRAPHY
